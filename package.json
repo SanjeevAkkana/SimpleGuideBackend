@@ -3,13 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "engines": {
-    "node":"14.x"
-  },
   "scripts": {
-    "start": "node server.js",
-    "vercel-build":"echo hello"
-
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
