@@ -27,8 +27,8 @@ router.get("/category-top-3-blogs", async (req, res) => {
     }
 });
 
-{/** Blogs based on a category */}
-router.get("/category",async (req,res) => {
+{/** Blogs based on a category */ }
+router.get("/category", async (req, res) => {
     try {
         const category = req.query.category.replace(/-/g, ' ');
         const filteredPosts = await Blog.find({ category })
@@ -37,7 +37,7 @@ router.get("/category",async (req,res) => {
     } catch (error) {
         res.json({ message: "Error retrieving filtered blog posts" });
     }
-})
-
+}
+)
 
 module.exports = router;

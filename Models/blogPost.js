@@ -20,10 +20,10 @@ const blogPostSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
-        content: {
+        content:[{
           type: String,
           required: true,
-        },
+        }],
         link: {
           type: String,
         },
@@ -43,10 +43,12 @@ const blogPostSchema = new mongoose.Schema(
     author: {
       type: String,
       required: true,
+      default: "Simple Guide"
     },
     authorImage: {
       type: String,
       required: true,
+      default: "https://i.pinimg.com/564x/fe/4f/61/fe4f610344c0da3e261f76fe0ae1cdd6.jpg"
     },
     questions: [
       {
