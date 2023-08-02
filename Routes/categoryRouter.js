@@ -2,6 +2,12 @@ const express = require('express')
 const router = express.Router();
 const Category = require("../Models/categoryPost");
 
+const categoryName = (category) => {
+    var words = category.split("-");
+    var categoryName = words.join(" ");
+    return categoryName;
+}
+
 // GET all categories
 router.get('/', async (req, res) => {
     try {
@@ -15,7 +21,7 @@ router.get('/', async (req, res) => {
 // GET a specific category by ID
 router.get('/:id', async (req, res) => {
     try {
-        const category = await Category.findById(req.params.id);
+        const category = await Category.find({categoryName:categoryName(req.params.id)});
         res.json(category);
     } catch (error) {
         resjson({ error: 'Failed to fetch category' });

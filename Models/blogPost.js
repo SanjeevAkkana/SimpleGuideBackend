@@ -6,23 +6,30 @@ const blogPostSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    introduction: {
-      type: String,
-      required: true
-    },
+    introduction: [
+      {
+        content: [{
+            type: String,
+            required: true,
+        }],
+      },
+    ],
     blogImage: {
       type: String,
       required: true
     },
     sections: [
       {
+        contentType: {
+          type: String,
+        },
         title: {
           type: String,
           required: true,
         },
-        content:[{
-          type: String,
-          required: true,
+        content: [{
+            type: String,
+            required: true,
         }],
         link: {
           type: String,
@@ -62,15 +69,6 @@ const blogPostSchema = new mongoose.Schema(
     ],
     youtubeVideo: {
       type: String
-    },
-    facebook: {
-      type: String,
-    },
-    instagram: {
-      type: String,
-    },
-    linkedin: {
-      type: String,
     }
   }
 )

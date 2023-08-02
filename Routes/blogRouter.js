@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Blog = require("../Models/blogPost");
 
+const Name = (text) => {
+    var words = text.split("-");
+    var author = words.join(" ");
+    return author;
+}
+
 //GET all blog posts
 router.get("/", async (req, res) => {
     try {
@@ -14,9 +20,11 @@ router.get("/", async (req, res) => {
 
 // GET a specific blog post by ID
 router.get('/:id', async (req, res) => {
+    const blog = req.params.id;
+    const authorName = Name(blog);
     try {
-        const blogPost = await Blog.findById(req.params.id);
-        res.json(blogPost);
+        const blogPost = await Blog.find({ title: authorName });
+        res.json(blogPost[0]);
     } catch (error) {
         res.json({ error: 'Failed to fetch blog post' });
     }

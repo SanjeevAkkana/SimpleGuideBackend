@@ -4,8 +4,10 @@ const dotenv = require('dotenv').config();
 const blogRouter = require("./Routes/blogRouter")
 const categoryRouter = require("./Routes/categoryRouter");
 const subscribeRouter = require("./Routes/subscribeRouter");
-const blogFilterRouter = require("./Routes/blogFilterRouter")
-const cors = require('cors')
+const blogFilterRouter = require("./Routes/blogFilterRouter");
+const authorRouter = require("./Routes/authorRouter");
+const cors = require('cors');
+const programRouter = require('./Routes/programRouter');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,7 +20,8 @@ app.use("/blog", blogRouter);
 app.use("/category", categoryRouter);
 app.use("/subscribe", subscribeRouter);
 app.use("/blogs",blogFilterRouter);
-
+app.use("/author",authorRouter);
+app.use("/program",programRouter);
 
 mongoose.connect(DatabaseUrl, {
     useNewUrlParser: true,
